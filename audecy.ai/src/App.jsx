@@ -182,7 +182,10 @@ function App() {
               { text: "Predictive Maintenance AI System", client: "Schindler Lifts" },
               { text: "Mobile App Development", client: "Startup Client" },
               { text: "Cross-Platform App Development", client: "Startup Client" },
-              { text: "AI Answer Paper Evaluation Model", client: "EdTech" }
+              { text: "Detal Prediction", client: "MEdTech Startup" },
+              { text: "Growth and Marketing", client: "Change Pay" },
+              { text: "Sports App", client: "Genki Sports" },
+              { text: "Smart Accounting and Investment tracker App", client: "Startup Client" }
             ].map((p, idx) => (
               <div className="project-pill" key={idx}>
                 <div className="project-pill-dot"></div>
@@ -320,7 +323,7 @@ function App() {
       {/* CONTACT */}
       <section id="contact">
         <div className="section-label">Get In Touch</div>
-        <h2 className="section-title">Let's build<br /><em>something</em> great.</h2>
+        <h2 className="section-title">Let's build<br />something great.</h2>
         <p className="contact-sub">
           Tell us what you're trying to solve. We'll tell you exactly how we'd approach it — no fluff, no sales pitch. Just a real conversation about what's possible.
         </p>
