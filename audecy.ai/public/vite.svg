@@ -1,1 +1,126 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--logos" width="31.88" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 257"><defs><linearGradient id="IconifyId1813088fe1fbc01fb466" x1="-.828%" x2="57.636%" y1="7.652%" y2="78.411%"><stop offset="0%" stop-color="#41D1FF"></stop><stop offset="100%" stop-color="#BD34FE"></stop></linearGradient><linearGradient id="IconifyId1813088fe1fbc01fb467" x1="43.376%" x2="50.316%" y1="2.242%" y2="89.03%"><stop offset="0%" stop-color="#FFEA83"></stop><stop offset="8.333%" stop-color="#FFDD35"></stop><stop offset="100%" stop-color="#FFA800"></stop></linearGradient></defs><path fill="url(#IconifyId1813088fe1fbc01fb466)" d="M255.153 37.938L134.897 252.976c-2.483 4.44-8.862 4.466-11.382.048L.875 37.958c-2.746-4.814 1.371-10.646 6.827-9.67l120.385 21.517a6.537 6.537 0 0 0 2.322-.004l117.867-21.483c5.438-.991 9.574 4.796 6.877 9.62Z"></path><path fill="url(#IconifyId1813088fe1fbc01fb467)" d="M185.432.063L96.44 17.501a3.268 3.268 0 0 0-2.634 3.014l-5.474 92.456a3.268 3.268 0 0 0 3.997 3.378l24.777-5.718c2.318-.535 4.413 1.507 3.936 3.838l-7.361 36.047c-.495 2.426 1.782 4.5 4.151 3.78l15.304-4.649c2.372-.72 4.652 1.36 4.15 3.788l-11.698 56.621c-.732 3.542 3.979 5.473 5.943 2.437l1.313-2.028l72.516-144.72c1.215-2.423-.88-5.186-3.54-4.672l-25.505 4.922c-2.396.462-4.435-1.77-3.759-4.114l16.646-57.705c.677-2.35-1.37-4.583-3.769-4.113Z"></path></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 540" width="400" height="540">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4b07a"/>
+      <stop offset="50%" style="stop-color:#b8965a"/>
+      <stop offset="100%" style="stop-color:#8a6e3a"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4b07a"/>
+      <stop offset="100%" style="stop-color:#b8965a"/>
+    </linearGradient>
+    <linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c9a060"/>
+      <stop offset="100%" style="stop-color:#8a6e3a"/>
+    </linearGradient>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600;700;800&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- ===================== -->
+  <!-- PANEL 1: PRIMARY DARK -->
+  <!-- ===================== -->
+  <rect x="0" y="0" width="400" height="170" fill="#0a0a0a" rx="4"/>
+
+  <!-- Icon mark -->
+  <polygon points="28,22 64,22 82,52 64,82 28,82 10,52" fill="none" stroke="url(#g1)" stroke-width="1.2" opacity="0.4"/>
+  <line x1="46" y1="30" x2="46" y2="74" stroke="url(#g2)" stroke-width="1.9" stroke-linecap="round"/>
+  <line x1="46" y1="30" x2="20" y2="74" stroke="url(#g2)" stroke-width="1.9" stroke-linecap="round"/>
+  <line x1="46" y1="30" x2="72" y2="74" stroke="url(#g2)" stroke-width="1.9" stroke-linecap="round"/>
+  <line x1="30" y1="54" x2="62" y2="54" stroke="url(#g2)" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="46" cy="30" r="3" fill="#d4b07a"/>
+  <circle cx="20" cy="74" r="2.4" fill="#b8965a"/>
+  <circle cx="72" cy="74" r="2.4" fill="#b8965a"/>
+  <circle cx="30" cy="54" r="1.7" fill="#d4b07a" opacity="0.7"/>
+  <circle cx="62" cy="54" r="1.7" fill="#d4b07a" opacity="0.7"/>
+  <circle cx="46" cy="30" r="8" fill="none" stroke="#b8965a" stroke-width="0.7" opacity="0.35"/>
+
+  <!-- Wordmark: "Audecy AI" — A caps, rest lowercase, AI caps, tight, no dot -->
+  <text x="100" y="66"
+    font-family="Raleway, 'Gill Sans', 'Century Gothic', sans-serif"
+    font-size="34"
+    font-weight="700"
+    letter-spacing="1.5"
+    fill="#f5f2ec"
+  >Audecy <tspan fill="url(#g1)" font-weight="800">AI</tspan></text>
+
+  <line x1="100" y1="79" x2="372" y2="79" stroke="#b8965a" stroke-width="0.5" opacity="0.25"/>
+
+  <text x="100" y="99"
+    font-family="Raleway, 'Gill Sans', sans-serif"
+    font-size="7.5"
+    font-weight="400"
+    letter-spacing="4"
+    fill="#3e3a35"
+  >INTELLIGENT SYSTEMS STUDIO</text>
+
+  <text x="12" y="158" font-family="'Courier New', monospace" font-size="7.5" letter-spacing="3" fill="#2a2a2a">PRIMARY — DARK</text>
+
+
+  <!-- ====================== -->
+  <!-- PANEL 2: PRIMARY LIGHT -->
+  <!-- ====================== -->
+  <rect x="0" y="190" width="400" height="170" fill="#f0ece4" rx="4"/>
+
+  <polygon points="28,212 64,212 82,242 64,272 28,272 10,242" fill="none" stroke="url(#g3)" stroke-width="1.2" opacity="0.5"/>
+  <line x1="46" y1="220" x2="46" y2="264" stroke="url(#g3)" stroke-width="1.9" stroke-linecap="round"/>
+  <line x1="46" y1="220" x2="20" y2="264" stroke="url(#g3)" stroke-width="1.9" stroke-linecap="round"/>
+  <line x1="46" y1="220" x2="72" y2="264" stroke="url(#g3)" stroke-width="1.9" stroke-linecap="round"/>
+  <line x1="30" y1="244" x2="62" y2="244" stroke="url(#g3)" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="46" cy="220" r="3" fill="#8a6e3a"/>
+  <circle cx="20" cy="264" r="2.4" fill="#b8965a"/>
+  <circle cx="72" cy="264" r="2.4" fill="#b8965a"/>
+  <circle cx="30" cy="244" r="1.7" fill="#8a6e3a" opacity="0.7"/>
+  <circle cx="62" cy="244" r="1.7" fill="#8a6e3a" opacity="0.7"/>
+  <circle cx="46" cy="220" r="8" fill="none" stroke="#b8965a" stroke-width="0.7" opacity="0.4"/>
+
+  <text x="100" y="256"
+    font-family="Raleway, 'Gill Sans', 'Century Gothic', sans-serif"
+    font-size="34"
+    font-weight="700"
+    letter-spacing="1.5"
+    fill="#0a0a0a"
+  >Audecy <tspan fill="url(#g3)" font-weight="800">AI</tspan></text>
+
+  <line x1="100" y1="269" x2="372" y2="269" stroke="#b8965a" stroke-width="0.5" opacity="0.3"/>
+
+  <text x="100" y="289"
+    font-family="Raleway, 'Gill Sans', sans-serif"
+    font-size="7.5"
+    font-weight="400"
+    letter-spacing="4"
+    fill="#9a8e7e"
+  >INTELLIGENT SYSTEMS STUDIO</text>
+
+  <text x="12" y="348" font-family="'Courier New', monospace" font-size="7.5" letter-spacing="3" fill="#bbb">PRIMARY — LIGHT</text>
+
+
+  <!-- ======================== -->
+  <!-- PANEL 3: COMPACT ONE-LINE -->
+  <!-- ======================== -->
+  <rect x="0" y="380" width="400" height="160" fill="#0a0a0a" rx="4"/>
+
+  <polygon points="28,400 64,400 82,440 64,480 28,480 10,440" fill="none" stroke="url(#g1)" stroke-width="1.4" opacity="0.4"/>
+  <line x1="46" y1="410" x2="46" y2="470" stroke="url(#g2)" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="46" y1="410" x2="20" y2="470" stroke="url(#g2)" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="46" y1="410" x2="72" y2="470" stroke="url(#g2)" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="30" y1="446" x2="62" y2="446" stroke="url(#g2)" stroke-width="1.8" stroke-linecap="round"/>
+  <circle cx="46" cy="410" r="3.5" fill="#d4b07a"/>
+  <circle cx="20" cy="470" r="2.8" fill="#b8965a"/>
+  <circle cx="72" cy="470" r="2.8" fill="#b8965a"/>
+  <circle cx="30" cy="446" r="2" fill="#d4b07a" opacity="0.7"/>
+  <circle cx="62" cy="446" r="2" fill="#d4b07a" opacity="0.7"/>
+  <circle cx="46" cy="410" r="10" fill="none" stroke="#b8965a" stroke-width="0.8" opacity="0.35"/>
+
+  <text x="100" y="449"
+    font-family="Raleway, 'Gill Sans', 'Century Gothic', sans-serif"
+    font-size="28"
+    font-weight="700"
+    letter-spacing="1.5"
+    fill="#f5f2ec"
+  >Audecy <tspan fill="url(#g1)" font-weight="800">AI</tspan></text>
+
+  <text x="12" y="528" font-family="'Courier New', monospace" font-size="7.5" letter-spacing="3" fill="#2a2a2a">COMPACT — ONE LINE</text>
+
+</svg>

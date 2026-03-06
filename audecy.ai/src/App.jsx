@@ -87,7 +87,7 @@ function App() {
       <div className="cursor-ring" id="cursorRing" ref={ringRef}></div>
 
       <nav id="mainNav" className={isScrolled ? 'scrolled' : ''}>
-        <a href="#" className="nav-logo">Audecy<span>.</span>AI</a>
+        <a href="#" className="nav-logo">Audecy<span></span>AI</a>
         <ul className="nav-links">
           <li><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
@@ -181,9 +181,8 @@ function App() {
             {[
               { text: "Predictive Maintenance AI System", client: "Schindler Lifts" },
               { text: "Mobile App Development", client: "Startup Client" },
-              { text: "Cross-Platform App Development", client: "Startup Client" },
-              { text: "Detal Prediction", client: "MEdTech Startup" },
-              { text: "Growth and Marketing", client: "Change Pay" },
+              { text: "Dental Prediction", client: "MEdTech Startup" },
+              { text: "Growth and Marketing", client: "ChangePay" },
               { text: "Sports App", client: "Genki Sports" },
               { text: "Smart Accounting and Investment tracker App", client: "Startup Client" }
             ].map((p, idx) => (
@@ -328,14 +327,13 @@ function App() {
           Tell us what you're trying to solve. We'll tell you exactly how we'd approach it — no fluff, no sales pitch. Just a real conversation about what's possible.
         </p>
         <div className="contact-actions">
-          <a href="mailto:hello@audecy.ai" className="btn-dark">hello@audecy.ai</a>
-          <a href="mailto:hello@audecy.ai" className="contact-email">Or just drop us a line →</a>
+          <a href="mailto:business@audecyai.com" className="btn-dark">business@audecyai.com</a>
         </div>
       </section>
 
       <footer>
         <div className="footer-logo">Audecy AI</div>
-        <p className="footer-copy">© 2025 Audecy AI. All Rights Reserved.</p>
+        <p className="footer-copy">© 2026 Audecy AI. All Rights Reserved.</p>
         <ul className="footer-links">
           <li><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
