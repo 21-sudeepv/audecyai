@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Audecy AI — Intelligence. Built.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --ink: #0a0a0a;
+      --paper: #f5f2ec;
+      --gold: #b8975a;
+      --gold-light: #d4b07a;
+      --mist: #e8e4dc;
+      --smoke: #8a8680;
+      --white: #fdfcf9;
+      --serif: 'Cormorant Garamond', serif;
+      --mono: 'DM Mono', monospace;
+      --sans: 'Outfit', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--sans);
+      font-weight: 300;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    .cursor {
+      position: fixed;
+      width: 8px; height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+    }
+    .cursor-ring {
+      position: fixed;
+      width: 36px; height: 36px;
+      border: 1px solid rgba(184,151,90,0.4);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: all 0.18s ease;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 60px;
+      transition: all 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(10,10,10,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(184,151,90,0.1);
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      color: var(--paper);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      gap: 42px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--smoke);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: var(--gold);
+      padding: 10px 24px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .nav-cta:hover { background: var(--gold-light); }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 60px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 30%, rgba(184,151,90,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(184,151,90,0.04) 0%, transparent 50%);
+    }
+
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(184,151,90,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(184,151,90,0.04) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
+    }
+
+    .hero-ticker {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.3s forwards;
+    }
+    .hero-ticker::before { content: ''; width: 40px; height: 1px; background: var(--gold); }
+
+    .hero-headline {
+      font-family: var(--serif);
+      font-size: clamp(3.5rem, 8vw, 8rem);
+      font-weight: 300;
+      line-height: 1.0;
+      max-width: 900px;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeUp 1.2s ease 0.5s forwards;
+    }
+    .hero-headline em { font-style: italic; color: var(--gold); }
+
+    .hero-sub {
+      font-weight: 200;
+      font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+      color: var(--smoke);
+      max-width: 480px;
+      line-height: 1.85;
+      margin-bottom: 56px;
+      opacity: 0;
+      animation: fadeUp 1.2s ease 0.7s forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      opacity: 0;
+      animation: fadeUp 1.2s ease 0.9s forwards;
+    }
+
+    .btn-primary {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: var(--gold);
+      padding: 16px 36px;
+      text-decoration: none;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    .btn-ghost {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--smoke);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: color 0.3s;
+    }
+    .btn-ghost:hover { color: var(--paper); }
+    .btn-ghost span { transition: transform 0.3s; }
+    .btn-ghost:hover span { transform: translateX(6px); }
+
+    .hero-scroll {
+      position: absolute; right: 60px; bottom: 80px;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      opacity: 0;
+      animation: fadeIn 1.5s ease 1.4s forwards;
+    }
+    .hero-scroll p {
+      font-family: var(--mono); font-size: 0.6rem;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--smoke); writing-mode: vertical-rl;
+    }
+    .scroll-line {
+      width: 1px; height: 60px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    /* MARQUEE */
+    .marquee-section {
+      border-top: 1px solid rgba(184,151,90,0.2);
+      border-bottom: 1px solid rgba(184,151,90,0.2);
+      padding: 18px 0; overflow: hidden;
+      background: rgba(184,151,90,0.02);
+    }
+    .marquee-track {
+      display: flex; gap: 0;
+      width: max-content;
+      animation: marquee 35s linear infinite;
+    }
+    .marquee-item {
+      font-family: var(--mono); font-size: 0.65rem;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--smoke); white-space: nowrap;
+      padding: 0 48px;
+      display: flex; align-items: center; gap: 48px;
+    }
+    .marquee-item::after { content: '✦'; color: var(--gold); font-size: 0.45rem; }
+
+    /* SECTIONS */
+    section { padding: 120px 60px; }
+
+    .section-label {
+      font-family: var(--mono); font-size: 0.65rem;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .section-label::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      font-weight: 300; line-height: 1.1; margin-bottom: 24px;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+
+    /* ABOUT */
+    #about { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+
+    .about-desc {
+      font-size: 1.05rem; line-height: 1.9;
+      color: var(--smoke); margin-bottom: 28px; font-weight: 300;
+    }
+
+    .about-stats {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 32px; margin-top: 56px;
+    }
+    .stat-num {
+      font-family: var(--serif); font-size: 3.5rem;
+      font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 8px;
+    }
+    .stat-label {
+      font-family: var(--mono); font-size: 0.62rem;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--smoke);
+    }
+
+    .about-card {
+      background: rgba(184,151,90,0.04);
+      border: 1px solid rgba(184,151,90,0.15);
+      padding: 48px; position: relative;
+    }
+    .about-card::before {
+      content: ''; position: absolute;
+      top: -1px; left: 40px;
+      width: 60px; height: 2px; background: var(--gold);
+    }
+    .about-card-title {
+      font-family: var(--serif); font-size: 1.6rem;
+      font-weight: 300; font-style: italic; margin-bottom: 20px;
+    }
+    .about-card-text {
+      font-size: 0.92rem; line-height: 1.9; color: var(--smoke); margin-bottom: 32px;
+    }
+    .project-pill {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 18px; margin-bottom: 10px;
+      background: rgba(184,151,90,0.05);
+      border-left: 2px solid var(--gold);
+    }
+    .project-pill-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+    .project-pill-text { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; }
+    .project-pill-client {
+      margin-left: auto; font-family: var(--mono); font-size: 0.6rem;
+      letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; white-space: nowrap;
+    }
+
+    /* SERVICES */
+    #services {
+      border-top: 1px solid rgba(184,151,90,0.1);
+      border-bottom: 1px solid rgba(184,151,90,0.1);
+    }
+    .services-header {
+      display: flex; justify-content: space-between;
+      align-items: flex-end; margin-bottom: 80px;
+    }
+    .services-header-right {
+      max-width: 360px; font-size: 0.95rem;
+      line-height: 1.85; color: var(--smoke); text-align: right;
+    }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+
+    .service-card {
+      padding: 48px 40px;
+      background: rgba(255,255,255,0.015);
+      border: 1px solid rgba(184,151,90,0.08);
+      transition: all 0.4s ease; position: relative; overflow: hidden;
+    }
+    .service-card::after {
+      content: ''; position: absolute;
+      bottom: 0; left: 0; width: 0; height: 2px;
+      background: var(--gold); transition: width 0.5s ease;
+    }
+    .service-card:hover { background: rgba(184,151,90,0.05); transform: translateY(-4px); }
+    .service-card:hover::after { width: 100%; }
+
+    .service-num {
+      font-family: var(--mono); font-size: 0.6rem;
+      letter-spacing: 0.25em; color: var(--gold); margin-bottom: 28px;
+    }
+    .service-icon { font-size: 1.8rem; margin-bottom: 20px; display: block; }
+    .service-name {
+      font-family: var(--serif); font-size: 1.55rem;
+      font-weight: 300; margin-bottom: 16px; line-height: 1.25;
+    }
+    .service-desc { font-size: 0.88rem; line-height: 1.85; color: var(--smoke); margin-bottom: 28px; }
+
+    .service-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      font-family: var(--mono); font-size: 0.57rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid rgba(184,151,90,0.25); padding: 5px 10px;
+    }
+
+    /* PROCESS */
+    #process { background: var(--paper); color: var(--ink); }
+    #process .section-label { color: var(--gold); }
+    #process .section-label::before { background: var(--gold); }
+    #process .section-title { color: var(--ink); }
+
+    .process-steps {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0; margin-top: 80px; position: relative;
+    }
+    .process-steps::before {
+      content: ''; position: absolute;
+      top: 28px; left: 8%; right: 8%; height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), var(--gold), transparent);
+    }
+
+    .process-step { padding: 0 28px; }
+    .step-num-wrap {
+      width: 56px; height: 56px; background: var(--ink);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 32px; position: relative; z-index: 1;
+    }
+    .step-num { font-family: var(--serif); font-size: 1.2rem; color: var(--gold); }
+    .step-title {
+      font-family: var(--serif); font-size: 1.4rem;
+      font-weight: 400; margin-bottom: 12px; color: var(--ink);
+    }
+    .step-desc { font-size: 0.88rem; line-height: 1.85; color: #5a5652; }
+
+    /* WHY US */
+    #why { display: grid; grid-template-columns: 5fr 7fr; gap: 100px; align-items: start; }
+
+    .why-item {
+      padding: 32px 0;
+      border-bottom: 1px solid rgba(184,151,90,0.12);
+      display: grid; grid-template-columns: 60px 1fr; gap: 24px; align-items: start;
+    }
+    .why-item:hover .why-item-title { color: var(--gold); }
+    .why-item-num {
+      font-family: var(--serif); font-size: 2rem;
+      font-weight: 300; color: rgba(184,151,90,0.25); line-height: 1; padding-top: 4px;
+    }
+    .why-item-title {
+      font-family: var(--serif); font-size: 1.3rem;
+      font-weight: 400; margin-bottom: 8px; transition: color 0.3s;
+    }
+    .why-item-text { font-size: 0.88rem; line-height: 1.85; color: var(--smoke); }
+
+    /* INDUSTRIES */
+    #industries {
+      text-align: center;
+      background: linear-gradient(to bottom, var(--ink), #0f0e0c);
+    }
+    #industries .section-label { justify-content: center; }
+    .industries-grid {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 14px; margin-top: 64px;
+      max-width: 780px; margin-left: auto; margin-right: auto;
+    }
+    .industry-pill {
+      font-size: 0.85rem; font-weight: 300; padding: 12px 28px;
+      border: 1px solid rgba(184,151,90,0.18); color: var(--smoke);
+      transition: all 0.3s; letter-spacing: 0.04em;
+    }
+    .industry-pill:hover { border-color: var(--gold); color: var(--gold); background: rgba(184,151,90,0.04); }
+
+    /* CONTACT */
+    #contact {
+      background: var(--gold); color: var(--ink);
+      text-align: center; padding: 140px 60px;
+    }
+    #contact .section-label { color: rgba(10,10,10,0.45); justify-content: center; }
+    #contact .section-label::before { background: rgba(10,10,10,0.35); }
+    #contact .section-title { color: var(--ink); font-size: clamp(3rem, 6vw, 6.5rem); }
+
+    .contact-sub {
+      font-size: 1.05rem; font-weight: 300;
+      color: rgba(10,10,10,0.6); max-width: 500px;
+      margin: 24px auto 56px; line-height: 1.85;
+    }
+    .contact-actions {
+      display: flex; justify-content: center;
+      align-items: center; gap: 44px; flex-wrap: wrap;
+    }
+    .btn-dark {
+      font-family: var(--mono); font-size: 0.7rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--paper); background: var(--ink);
+      padding: 18px 42px; text-decoration: none;
+      transition: all 0.3s; display: inline-block;
+    }
+    .btn-dark:hover { background: #1c1c1c; transform: translateY(-2px); }
+
+    .contact-email {
+      font-family: var(--serif); font-size: 1.3rem;
+      font-style: italic; color: rgba(10,10,10,0.6);
+      text-decoration: none; transition: color 0.3s;
+    }
+    .contact-email:hover { color: var(--ink); }
+
+    /* FOOTER */
+    footer {
+      padding: 36px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid rgba(184,151,90,0.1);
+    }
+    .footer-logo { font-family: var(--serif); font-size: 1.2rem; color: var(--paper); opacity: 0.5; }
+    .footer-copy { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.2em; color: var(--smoke); text-transform: uppercase; }
+    .footer-links { display: flex; gap: 28px; list-style: none; }
+    .footer-links a { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--smoke); text-decoration: none; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(36px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      nav { padding: 22px 28px; }
+      .nav-links { display: none; }
+      #hero, section { padding: 80px 28px; }
+      #hero { padding-bottom: 60px; }
+      #about, #why { grid-template-columns: 1fr; gap: 56px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-steps::before { display: none; }
+      .services-header { flex-direction: column; gap: 20px; }
+      .services-header-right { text-align: left; max-width: 100%; }
+      footer { flex-direction: column; gap: 18px; text-align: center; }
+      .hero-scroll { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <nav id="mainNav">
+    <a href="#" class="nav-logo">Audecy<span>.</span>AI</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#why">Why Us</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Start a Project</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+
+    <div class="hero-ticker">Intelligence, Engineered for Outcomes</div>
+
+    <h1 class="hero-headline">
+      We build <em>AI</em><br>that actually<br>works.
+    </h1>
+
+    <p class="hero-sub">
+      Audecy AI is an elite consulting and product development agency. We partner with startups and enterprises to design, build, and deploy AI and automation solutions that create lasting competitive advantage.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Begin Your Project</a>
+      <a href="#services" class="btn-ghost">Explore Our Work <span>→</span></a>
+    </div>
+
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <p>Scroll</p>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <div class="marquee-item">Predictive Maintenance</div>
+      <div class="marquee-item">AI Product Development</div>
+      <div class="marquee-item">Machine Learning</div>
+      <div class="marquee-item">Process Automation</div>
+      <div class="marquee-item">Web & App Development</div>
+      <div class="marquee-item">Business Consulting</div>
+      <div class="marquee-item">Computer Vision</div>
+      <div class="marquee-item">NLP Solutions</div>
+      <div class="marquee-item">Predictive Maintenance</div>
+      <div class="marquee-item">AI Product Development</div>
+      <div class="marquee-item">Machine Learning</div>
+      <div class="marquee-item">Process Automation</div>
+      <div class="marquee-item">Web & App Development</div>
+      <div class="marquee-item">Business Consulting</div>
+      <div class="marquee-item">Computer Vision</div>
+      <div class="marquee-item">NLP Solutions</div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-left reveal">
+      <div class="section-label">About Audecy AI</div>
+      <h2 class="section-title">Where <em>expertise</em><br>meets execution.</h2>
+      <p class="about-desc">
+        We are not a generic technology firm. Audecy AI is a focused team of AI engineers, full-stack developers, and business strategists who operate at the intersection of cutting-edge research and real-world deployment.
+      </p>
+      <p class="about-desc">
+        From identifying the right problem to delivering a production-ready solution, we take full ownership of the entire journey — so you can focus on what you do best.
+      </p>
+      <div class="about-stats">
+        <div>
+          <div class="stat-num">4+</div>
+          <div class="stat-label">Active Enterprise Projects</div>
+        </div>
+        <div>
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Custom-Built Solutions</div>
+        </div>
+        <div>
+          <div class="stat-num">AI</div>
+          <div class="stat-label">First Approach to Every Brief</div>
+        </div>
+        <div>
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Problems We Can Solve</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-right reveal">
+      <div class="about-card">
+        <div class="about-card-title">Current Live Projects</div>
+        <div class="about-card-text">
+          A snapshot of what we're building right now — enterprise-grade solutions across industries, each one stretching the limits of what AI can deliver in the real world.
+        </div>
+        <div class="project-pill">
+          <div class="project-pill-dot"></div>
+          <div class="project-pill-text">Predictive Maintenance AI System</div>
+          <div class="project-pill-client">Schindler Lifts</div>
+        </div>
+        <div class="project-pill">
+          <div class="project-pill-dot"></div>
+          <div class="project-pill-text">Mobile App Development</div>
+          <div class="project-pill-client">Startup Client</div>
+        </div>
+        <div class="project-pill">
+          <div class="project-pill-dot"></div>
+          <div class="project-pill-text">Cross-Platform App Development</div>
+          <div class="project-pill-client">Startup Client</div>
+        </div>
+        <div class="project-pill">
+          <div class="project-pill-dot"></div>
+          <div class="project-pill-text">AI Answer Paper Evaluation Model</div>
+          <div class="project-pill-client">EdTech</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="services-header reveal">
+      <div>
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title">Our <em>Services</em></h2>
+      </div>
+      <p class="services-header-right">
+        Every engagement is bespoke. We listen first, then architect a solution precisely right for your challenge — not a template, not an off-the-shelf product.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-num">01</div>
+        <span class="service-icon">⬡</span>
+        <div class="service-name">AI & Machine Learning</div>
+        <p class="service-desc">Custom models, pipelines, and intelligent systems designed for your exact use case. From predictive analytics to generative AI, we turn data into decisions.</p>
+        <div class="service-tags">
+          <span class="tag">Predictive Models</span>
+          <span class="tag">NLP</span>
+          <span class="tag">Computer Vision</span>
+          <span class="tag">LLM Integration</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-num">02</div>
+        <span class="service-icon">◈</span>
+        <div class="service-name">Automation & Process Intelligence</div>
+        <p class="service-desc">Eliminate inefficiency. We audit, redesign, and automate your operational workflows using AI-powered systems that scale with your business and never sleep.</p>
+        <div class="service-tags">
+          <span class="tag">RPA</span>
+          <span class="tag">Workflow AI</span>
+          <span class="tag">Anomaly Detection</span>
+          <span class="tag">IoT Integration</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-num">03</div>
+        <span class="service-icon">◎</span>
+        <div class="service-name">Web & App Development</div>
+        <p class="service-desc">Precision-engineered digital products built for performance and scale. Web platforms, mobile apps, and full-stack systems crafted to the highest standard.</p>
+        <div class="service-tags">
+          <span class="tag">React / Next.js</span>
+          <span class="tag">React Native</span>
+          <span class="tag">Flutter</span>
+          <span class="tag">Node.js</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-num">04</div>
+        <span class="service-icon">◇</span>
+        <div class="service-name">AI Product Development</div>
+        <p class="service-desc">From idea to market. We partner with startups to shape, build, and launch AI-native products — handling strategy, architecture, and engineering end-to-end.</p>
+        <div class="service-tags">
+          <span class="tag">MVP Development</span>
+          <span class="tag">AI Integration</span>
+          <span class="tag">Product Strategy</span>
+          <span class="tag">GTM Support</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-num">05</div>
+        <span class="service-icon">△</span>
+        <div class="service-name">Data Engineering & Analytics</div>
+        <p class="service-desc">Your data is only as valuable as what you extract from it. We build infrastructure, models, and dashboards that turn raw data into strategic intelligence.</p>
+        <div class="service-tags">
+          <span class="tag">Data Pipelines</span>
+          <span class="tag">BI Dashboards</span>
+          <span class="tag">Forecasting</span>
+          <span class="tag">MLOps</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-num">06</div>
+        <span class="service-icon">○</span>
+        <div class="service-name">AI Business Consulting</div>
+        <p class="service-desc">Not sure where AI fits into your business? We assess your operations, identify high-impact opportunities, and give you a clear, actionable roadmap to transformation.</p>
+        <div class="service-tags">
+          <span class="tag">AI Readiness Audit</span>
+          <span class="tag">Opportunity Mapping</span>
+          <span class="tag">Tech Strategy</span>
+          <span class="tag">Implementation Planning</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="section-label reveal">How We Work</div>
+    <h2 class="section-title reveal">A process built for <em>precision.</em></h2>
+
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-num-wrap"><span class="step-num">I</span></div>
+        <div class="step-title">Discover</div>
+        <p class="step-desc">We open with deep listening. Understanding your business, your constraints, and the real problem beneath the surface — before writing a single line of code.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num-wrap"><span class="step-num">II</span></div>
+        <div class="step-title">Architect</div>
+        <p class="step-desc">We design the right solution — technically sound, scalable, and aligned to your goals. No bloat, no guesswork. A clear blueprint before we build.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num-wrap"><span class="step-num">III</span></div>
+        <div class="step-title">Build</div>
+        <p class="step-desc">Agile, iterative, and transparent. You see progress at every stage. Our engineers deliver with speed and rigour — keeping you in the loop throughout.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num-wrap"><span class="step-num">IV</span></div>
+        <div class="step-title">Deploy & Scale</div>
+        <p class="step-desc">We don't hand over and disappear. We deploy, monitor, and stay with you as your solution grows — ensuring it performs in production, not just in demos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why">
+    <div class="why-left reveal">
+      <div class="section-label">Why Audecy AI</div>
+      <h2 class="section-title">The <em>edge</em><br>you've been<br>looking for.</h2>
+      <p style="color: var(--smoke); font-size: 0.95rem; line-height: 1.9; margin-top: 24px;">
+        There are many agencies that claim AI expertise. Very few can demonstrate it. We let our work speak — and we believe that the right partnership changes everything.
+      </p>
+    </div>
+
+    <div class="why-right">
+      <div class="why-item reveal">
+        <div class="why-item-num">01</div>
+        <div>
+          <div class="why-item-title">Specialists, Not Generalists</div>
+          <p class="why-item-text">We live in AI and automation. It's not a service we bolted on — it's the only thing we do, and we do it at an elite level.</p>
+        </div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-item-num">02</div>
+        <div>
+          <div class="why-item-title">End-to-End Ownership</div>
+          <p class="why-item-text">From strategy to production deployment, we handle the full lifecycle. One team, total accountability, zero handoff gaps.</p>
+        </div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-item-num">03</div>
+        <div>
+          <div class="why-item-title">Built for Real Results</div>
+          <p class="why-item-text">We measure success by outcomes, not deliverables. Our solutions are designed to work under real conditions — not just pass a demo.</p>
+        </div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-item-num">04</div>
+        <div>
+          <div class="why-item-title">Radical Transparency</div>
+          <p class="why-item-text">You'll always know where your project stands. Clear communication, regular updates, and no surprises — from kickoff to launch and beyond.</p>
+        </div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-item-num">05</div>
+        <div>
+          <div class="why-item-title">Startup Speed, Enterprise Rigour</div>
+          <p class="why-item-text">We move fast without compromising quality. Whether you're seed-stage or mid-market, we match our pace to your ambition.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section id="industries">
+    <div class="section-label reveal">Industries We Serve</div>
+    <h2 class="section-title reveal" style="text-align: center; margin: 0 auto;">No sector is <em>off limits.</em></h2>
+    <div class="industries-grid reveal">
+      <div class="industry-pill">Manufacturing & Industrial</div>
+      <div class="industry-pill">EdTech</div>
+      <div class="industry-pill">Healthcare</div>
+      <div class="industry-pill">Fintech</div>
+      <div class="industry-pill">Logistics & Supply Chain</div>
+      <div class="industry-pill">Real Estate</div>
+      <div class="industry-pill">Retail & E-Commerce</div>
+      <div class="industry-pill">SaaS Startups</div>
+      <div class="industry-pill">Legal & Compliance</div>
+      <div class="industry-pill">Energy & Utilities</div>
+      <div class="industry-pill">HR & Talent</div>
+      <div class="industry-pill">Media & Content</div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Let's build<br><em>something</em> great.</h2>
+    <p class="contact-sub">
+      Tell us what you're trying to solve. We'll tell you exactly how we'd approach it — no fluff, no sales pitch. Just a real conversation about what's possible.
+    </p>
+    <div class="contact-actions">
+      <a href="mailto:hello@audecy.ai" class="btn-dark">hello@audecy.ai</a>
+      <a href="mailto:hello@audecy.ai" class="contact-email">Or just drop us a line →</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Audecy AI</div>
+    <p class="footer-copy">© 2025 Audecy AI. All Rights Reserved.</p>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </footer>
+
+  <script>
+    // Custom cursor
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cursor.style.left = mx + 'px';
+      cursor.style.top = my + 'px';
+    });
+
+    (function animateRing() {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      ring.style.left = rx + 'px';
+      ring.style.top = ry + 'px';
+      requestAnimationFrame(animateRing);
+    })();
+
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        ring.style.transform = 'translate(-50%,-50%) scale(1.6)';
+        ring.style.borderColor = 'rgba(184,151,90,0.9)';
+      });
+      el.addEventListener('mouseleave', () => {
+        ring.style.transform = 'translate(-50%,-50%) scale(1)';
+        ring.style.borderColor = 'rgba(184,151,90,0.4)';
+      });
+    });
+
+    // Nav on scroll
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
