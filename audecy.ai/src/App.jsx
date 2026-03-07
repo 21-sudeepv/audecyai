@@ -3,6 +3,7 @@ import './App.css';
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [expandedProject, setExpandedProject] = useState(null);
   const cursorRef = useRef(null);
   const ringRef = useRef(null);
   const mousePos = useRef({ x: 0, y: 0 });
@@ -178,20 +179,55 @@ function App() {
             <div className="about-card-text">
               A snapshot of what we're building right now — enterprise-grade solutions across industries, each one stretching the limits of what AI can deliver in the real world.
             </div>
-            {[
-              { text: "Predictive Maintenance AI System", client: "Schindler Lifts" },
-              { text: "Mobile App Development", client: "Startup Client" },
-              { text: "Dental Prediction", client: "MEdTech Startup" },
-              { text: "Growth and Marketing", client: "ChangePay" },
-              { text: "Sports App", client: "Genki Sports" },
-              { text: "Smart Accounting and Investment tracker App", client: "Startup Client" }
-            ].map((p, idx) => (
-              <div className="project-pill" key={idx}>
-                <div className="project-pill-dot"></div>
-                <div className="project-pill-text">{p.text}</div>
-                <div className="project-pill-client">{p.client}</div>
-              </div>
-            ))}
+            <div className="project-accordion">
+              {[
+                {
+                  title: "Intelligent Fault Prediction Engine",
+                  client: "Schindler Lifts",
+                  desc: "Real-time ML system that predicts elevator failures before they happen — reducing downtime and maintenance costs at scale."
+                },
+                {
+                  title: "Clinical Decision Support Model",
+                  client: "MedTech Startup",
+                  desc: "An AI model that analyses patient data to surface early risk signals — putting smarter decisions in the hands of clinicians."
+                },
+                {
+                  title: "Business Strategy & Growth Consulting",
+                  client: "Change Pay",
+                  desc: "End-to-end business consulting — from market positioning to revenue strategy — helping Change Pay scale with clarity and conviction."
+                },
+                {
+                  title: "Badminton Hub — Court Booking Platform",
+                  client: "Genki Sports",
+                  desc: "A full-stack sports platform for discovering, booking, and managing badminton courts — built for players, club owners, and communities. Think Playo, purpose-built for badminton."
+                },
+                {
+                  title: "Smart Finance & Investment Suite",
+                  client: "Startup Client",
+                  desc: "An intelligent accounting and portfolio tracker that gives users a clear, automated view of their money and investments."
+                }
+              ].map((p, idx) => (
+                <div
+                  className={`project-item ${expandedProject === idx ? 'expanded' : ''}`}
+                  key={idx}
+                  onClick={() => setExpandedProject(expandedProject === idx ? null : idx)}
+                >
+                  <div className="project-pill">
+                    <div className="project-pill-dot"></div>
+                    <div className="project-pill-text">{p.title}</div>
+                    <div className="project-pill-client">{p.client}</div>
+                    <div className="project-pill-arrow">
+                      {expandedProject === idx ? '−' : '+'}
+                    </div>
+                  </div>
+                  <div className="project-description">
+                    <div className="description-inner">
+                      {p.desc}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
