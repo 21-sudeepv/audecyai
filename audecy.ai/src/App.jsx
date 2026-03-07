@@ -316,8 +316,8 @@ function App() {
         <div className="why-left reveal">
           <div className="section-label">Why Audecy AI</div>
           <h2 className="section-title">The <em>edge</em><br />you've been<br />looking for.</h2>
-          <p style={{ color: 'var(--smoke)', fontSize: '0.95rem', lineHeight: '1.9', marginTop: '24px' }}>
-            There are many agencies that claim AI expertise. Very few can demonstrate it. We let our work speak — and we believe that the right partnership changes everything.
+          <p style={{ color: 'var(--smoke)', fontSize: '1.1rem', lineHeight: '1.8', marginTop: '32px', fontWeight: '300' }}>
+            We built Audecy AI on a simple belief — that intelligent technology, applied with precision, can change the trajectory of a business. We don't just consult. We build, ship, and stand behind everything we deliver.
           </p>
         </div>
 
@@ -360,7 +360,7 @@ function App() {
         <div className="section-label">Get In Touch</div>
         <h2 className="section-title">Let's build<br />something great.</h2>
         <p className="contact-sub">
-          Tell us what you're trying to solve. We'll tell you exactly how we'd approach it — no fluff, no sales pitch. Just a real conversation about what's possible.
+          Tell us what you're trying to solve. Our team will map out exactly how we'd approach it — no fluff, no sales pitch. Just a real conversation about what's possible.
         </p>
         <div className="contact-actions">
           <a href="mailto:business@audecyai.com" className="btn-dark">business@audecyai.com</a>
