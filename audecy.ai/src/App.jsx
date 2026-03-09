@@ -377,7 +377,7 @@ function App() {
         </ul>
       </footer>
       <a
-        href="https://wa.me/919133865537"
+        href="https://wa.me/919133865537?text=Hello"
         className="whatsapp-float"
         target="_blank"
         rel="noopener noreferrer"
