@@ -8,6 +8,15 @@ function App() {
   const ringRef = useRef(null);
   const mousePos = useRef({ x: 0, y: 0 });
   const ringPos = useRef({ x: 0, y: 0 });
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // WhatsApp Drag State
+  const [waPos, setWaPos] = useState(() => {
+    const saved = localStorage.getItem('waPos');
+    return saved ? JSON.parse(saved) : { bottom: 40, right: 40 };
+  });
+  const waBtnRef = useRef(null);
+  const dragInfo = useRef({ isDragging: false, startX: 0, startY: 0, startBottom: 0, startRight: 0 });
 
   useEffect(() => {
     // 1. Cursor Logic
@@ -52,13 +61,57 @@ function App() {
 
     const animationId = requestAnimationFrame(animateRing);
 
-    // 2. Scroll Logic for Nav
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 60);
     };
     window.addEventListener('scroll', handleScroll);
 
-    // 3. Intersection Observer (Reveal)
+    // 3. WhatsApp Drag Logic (Manual to avoid event issues)
+    const handleDragStart = (e) => {
+      if (e.target.closest('.whatsapp-float')) {
+        dragInfo.current.isDragging = true;
+        const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        const clientY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+        dragInfo.current.startX = clientX;
+        dragInfo.current.startY = clientY;
+        dragInfo.current.startBottom = waPos.bottom;
+        dragInfo.current.startRight = waPos.right;
+
+        // Prevent default only if mouse to avoid click issues vs drag issues
+        if (e.type === 'mousedown') e.preventDefault();
+      }
+    };
+
+    const handleDragMove = (e) => {
+      if (!dragInfo.current.isDragging) return;
+
+      const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+      const clientY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+
+      const diffX = clientX - dragInfo.current.startX;
+      const diffY = clientY - dragInfo.current.startY;
+
+      const newBottom = Math.max(20, Math.min(window.innerHeight - 80, dragInfo.current.startBottom - diffY));
+      const newRight = Math.max(20, Math.min(window.innerWidth - 80, dragInfo.current.startRight - diffX));
+
+      setWaPos({ bottom: newBottom, right: newRight });
+    };
+
+    const handleDragEnd = () => {
+      if (dragInfo.current.isDragging) {
+        dragInfo.current.isDragging = false;
+        localStorage.setItem('waPos', JSON.stringify(waPos));
+      }
+    };
+
+    window.addEventListener('mousemove', handleDragMove);
+    window.addEventListener('mouseup', handleDragEnd);
+    window.addEventListener('touchmove', handleDragMove, { passive: false });
+    window.addEventListener('touchend', handleDragEnd);
+    window.addEventListener('mousedown', handleDragStart);
+    window.addEventListener('touchstart', handleDragStart, { passive: true });
+
+    // 4. Intersection Observer (Reveal)
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
@@ -73,6 +126,12 @@ function App() {
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleDragMove);
+      window.removeEventListener('mouseup', handleDragEnd);
+      window.removeEventListener('touchmove', handleDragMove);
+      window.removeEventListener('touchend', handleDragEnd);
+      window.removeEventListener('mousedown', handleDragStart);
+      window.removeEventListener('touchstart', handleDragStart);
       cancelAnimationFrame(animationId);
       interactiveElements.forEach(el => {
         el.removeEventListener('mouseenter', handleMouseEnter);
@@ -87,13 +146,26 @@ function App() {
       <div className="cursor" id="cursor" ref={cursorRef}></div>
       <div className="cursor-ring" id="cursorRing" ref={ringRef}></div>
 
-      <nav id="mainNav" className={isScrolled ? 'scrolled' : ''}>
+      <nav id="mainNav" className={`${isScrolled ? 'scrolled' : ''} ${isMenuOpen ? 'menu-open' : ''}`}>
         <a href="#" className="nav-logo">Audecy<span></span>AI</a>
-        <ul className="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#process">Process</a></li>
-          <li><a href="#why">Why Us</a></li>
+
+        <button
+          className="nav-toggle"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle Menu"
+        >
+          <div className="hamburger">
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+
+        <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+          <li><a href="#about" onClick={() => setIsMenuOpen(false)}>About</a></li>
+          <li><a href="#services" onClick={() => setIsMenuOpen(false)}>Services</a></li>
+          <li><a href="#process" onClick={() => setIsMenuOpen(false)}>Process</a></li>
+          <li><a href="#why" onClick={() => setIsMenuOpen(false)}>Why Us</a></li>
+          <li><a href="#contact" className="nav-cta-mobile" onClick={() => setIsMenuOpen(false)}>Start a Project</a></li>
         </ul>
         <a href="#contact" className="nav-cta">Start a Project</a>
       </nav>
@@ -382,10 +454,23 @@ function App() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Contact us on WhatsApp"
+        ref={waBtnRef}
+        style={{
+          bottom: `${waPos.bottom}px`,
+          right: `${waPos.right}px`,
+          cursor: dragInfo.current.isDragging ? 'grabbing' : 'grab'
+        }}
+        onClick={(e) => {
+          // If was dragging significantly, prevent click
+          if (Math.abs(waPos.right - dragInfo.current.startRight) > 5) {
+            e.preventDefault();
+          }
+        }}
       >
         <svg viewBox="0 0 448 512">
           <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-5.5-2.8-23.2-8.5-44.2-27.1-16.4-14.6-27.4-32.7-30.6-38.2-3.2-5.6-.3-8.6 2.5-11.3 2.5-2.5 5.5-6.5 8.3-9.8 2.8-3.2 3.7-5.5 5.5-9.2 1.9-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 13.3 5.7 23.5 9.2 31.6 11.8 13.3 4.2 25.5 3.6 35.2 2.2 10.8-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
         </svg>
+        <span className="whatsapp-float-label">Let's Chat</span>
       </a>
     </>
   );
