@@ -190,10 +190,6 @@ function App() {
           <a href="#services" className="btn-ghost">Explore Our Work <span>→</span></a>
         </div>
 
-        <div className="hero-scroll">
-          <div className="scroll-line"></div>
-          <p>Scroll</p>
-        </div>
       </section>
 
       {/* MARQUEE */}
