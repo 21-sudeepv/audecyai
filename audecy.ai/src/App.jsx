@@ -9,6 +9,7 @@ function App() {
   const mousePos = useRef({ x: 0, y: 0 });
   const ringPos = useRef({ x: 0, y: 0 });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // WhatsApp Drag State
   const [waPos, setWaPos] = useState(() => {
@@ -113,15 +114,21 @@ function App() {
 
     // 4. Intersection Observer (Reveal)
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
-          observer.unobserve(entry.target);
+          entry.target.classList.add('visible');
+        } else if (entry.target.id !== 'hero') {
+          // Don't re-hide the hero, but do re-hide other sections for replay
+          entry.target.classList.remove('visible');
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px -15% 0px' });
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal, .section-reveal').forEach(el => observer.observe(el));
+
+    const modalTimer = setTimeout(() => {
+      setIsModalOpen(true);
+    }, 60000); // 1 minute
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
@@ -133,6 +140,7 @@ function App() {
       window.removeEventListener('mousedown', handleDragStart);
       window.removeEventListener('touchstart', handleDragStart);
       cancelAnimationFrame(animationId);
+      clearTimeout(modalTimer);
       interactiveElements.forEach(el => {
         el.removeEventListener('mouseenter', handleMouseEnter);
         el.removeEventListener('mouseleave', handleMouseLeave);
@@ -171,7 +179,7 @@ function App() {
       </nav>
 
       {/* HERO */}
-      <section id="hero">
+      <section id="hero" className="section-reveal">
         <div className="hero-bg"></div>
         <div className="hero-grid"></div>
 
@@ -193,7 +201,7 @@ function App() {
       </section>
 
       {/* MARQUEE */}
-      <div className="marquee-section">
+      <div className="marquee-section reveal">
         <div className="marquee-track">
           {[...Array(2)].map((_, i) => (
             <React.Fragment key={i}>
@@ -211,7 +219,7 @@ function App() {
       </div>
 
       {/* ABOUT */}
-      <section id="about">
+      <section id="about" className="section-reveal">
         <div className="about-left reveal">
           <div className="section-label">About Audecy AI</div>
           <h2 className="section-title">Where <em>expertise</em><br />meets execution.</h2>
@@ -301,7 +309,7 @@ function App() {
       </section>
 
       {/* SERVICES */}
-      <section id="services">
+      <section id="services" className="section-reveal">
         <div className="services-header reveal">
           <div>
             <div className="section-label">What We Do</div>
@@ -359,7 +367,7 @@ function App() {
       </section>
 
       {/* PROCESS */}
-      <section id="process">
+      <section id="process" className="section-reveal">
         <div className="section-label reveal">How We Work</div>
         <h2 className="section-title reveal">A process built for <em>precision.</em></h2>
 
@@ -380,7 +388,7 @@ function App() {
       </section>
 
       {/* WHY US */}
-      <section id="why">
+      <section id="why" className="section-reveal">
         <div className="why-left reveal">
           <div className="section-label">Why Audecy AI</div>
           <h2 className="section-title">The <em>edge</em><br />you've been<br />looking for.</h2>
@@ -409,7 +417,7 @@ function App() {
       </section>
 
       {/* INDUSTRIES */}
-      <section id="industries">
+      <section id="industries" className="section-reveal">
         <div className="section-label reveal">Industries We Serve</div>
         <h2 className="section-title reveal" style={{ textAlign: 'center', margin: '0 auto' }}>No sector is <em>off limits.</em></h2>
         <div className="industries-grid reveal">
@@ -424,7 +432,7 @@ function App() {
       </section>
 
       {/* CONTACT */}
-      <section id="contact">
+      <section id="contact" className="section-reveal">
         <div className="section-label">Get In Touch</div>
         <h2 className="section-title">Let's build<br />something great.</h2>
         <p className="contact-sub">
@@ -477,6 +485,24 @@ function App() {
         <span className="whatsapp-float-label">Let's Chat</span>
       </a>
 
+      {isModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <button className="modal-close" onClick={() => setIsModalOpen(false)}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M18 6L6 18M6 6l12 12" />
+              </svg>
+            </button>
+            <div className="modal-icon">✦</div>
+            <h2 className="modal-title">Ready to <em>engineer</em> your next outcome?</h2>
+            <p className="modal-text">Our experts are available to discuss your AI and automation vision. Let's start the conversation.</p>
+            <div className="modal-actions">
+              <a href="mailto:business@audecyai.com" className="btn-modal-primary">Send an Email</a>
+              <a href="https://wa.me/919133865537?text=Hello" className="btn-modal-ghost" target="_blank" rel="noopener noreferrer">Message on WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
