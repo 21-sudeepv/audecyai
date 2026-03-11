@@ -147,7 +147,7 @@ function App() {
       <div className="cursor-ring" id="cursorRing" ref={ringRef}></div>
 
       <nav id="mainNav" className={`${isScrolled ? 'scrolled' : ''} ${isMenuOpen ? 'menu-open' : ''}`}>
-        <a href="#" className="nav-logo">Audecy<span></span>AI</a>
+        <a href="#" className="nav-logo">Audecy<span>AI</span></a>
 
         <button
           className="nav-toggle"

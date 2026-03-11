@@ -7,30 +7,34 @@
 }
 
 :root {
-  --ink: #0a0a0a;
-  --paper: #f5f2ec;
-  --gold: #b8975a;
-  --gold-light: #d4b07a;
-  --mist: #e8e4dc;
-  --smoke: #8a8680;
-  --white: #fdfcf9;
+  --ink: #080808;
+  --paper: #f8f6f2;
+  --gold: #c5a871; /* Slightly brighter and richer */
+  --gold-light: #dfc28d;
+  --mist: #eeece8;
+  --smoke: #95928d; /* More contrast */
+  --white: #ffffff;
   --serif: 'Cormorant Garamond', serif;
   --mono: 'DM Mono', monospace;
   --sans: 'Outfit', sans-serif;
+  --gold-glow: rgba(197, 168, 113, 0.4);
 }
 
-html,
+::selection {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;
   width: 100%;
   overflow-x: hidden;
   position: relative;
-  scroll-behavior: smooth;
-}
-
-
-body {
   background: var(--ink);
   color: var(--paper);
   font-family: var(--sans);
