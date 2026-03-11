@@ -60,7 +60,12 @@ function App() {
       el.addEventListener('mouseleave', handleMouseLeave);
     });
 
-    const animationId = requestAnimationFrame(animateRing);
+    const isMobileDevice = window.innerWidth <= 1024;
+    let animationId;
+    
+    if (!isMobileDevice) {
+      animationId = requestAnimationFrame(animateRing);
+    }
 
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 60);
@@ -155,7 +160,7 @@ function App() {
       <div className="cursor-ring" id="cursorRing" ref={ringRef}></div>
 
       <nav id="mainNav" className={`${isScrolled ? 'scrolled' : ''} ${isMenuOpen ? 'menu-open' : ''}`}>
-        <a href="#" className="nav-logo">Audecy<span>AI</span></a>
+        <a href="#" className="nav-logo" aria-label="Audecy AI Home">Audecy<span>AI</span></a>
 
         <button
           className="nav-toggle"
@@ -179,7 +184,7 @@ function App() {
       </nav>
 
       {/* HERO */}
-      <section id="hero" className="section-reveal">
+      <section id="hero">
         <div className="hero-bg"></div>
         <div className="hero-grid"></div>
 
@@ -445,7 +450,7 @@ function App() {
 
       <footer className="reveal">
         <div className="footer-top">
-          <a href="#" className="footer-logo">Audecy<span>AI</span></a>
+          <a href="#" className="footer-logo" aria-label="Audecy AI Home">Audecy<span>AI</span></a>
           <ul className="footer-links">
             <li><a href="#about">About</a></li>
             <li><a href="#services">Services</a></li>
@@ -488,7 +493,7 @@ function App() {
       {isModalOpen && (
         <div className="modal-overlay">
           <div className="modal-content">
-            <button className="modal-close" onClick={() => setIsModalOpen(false)}>
+            <button className="modal-close" onClick={() => setIsModalOpen(false)} aria-label="Close Modal">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M18 6L6 18M6 6l12 12" />
               </svg>

@@ -227,7 +227,7 @@ nav.scrolled {
   align-items: center;
   gap: 20px;
   opacity: 0;
-  animation: fadeUp 1s cubic-bezier(0.19, 1, 0.22, 1) 0.3s forwards;
+  animation: fadeUp 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0.1s forwards;
 }
 
 @media (max-width: 1440px) {
@@ -244,6 +244,26 @@ nav.scrolled {
   background: var(--gold);
 }
 
+@media (max-width: 768px) {
+  .hero-ticker, 
+  .hero-headline, 
+  .hero-sub, 
+  .hero-actions {
+    opacity: 1 !important;
+    animation: none !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+  
+  #hero {
+    min-height: auto;
+    padding-top: 100px;
+    padding-bottom: 60px;
+  }
+}
+
+
+
 .hero-headline {
   font-family: var(--serif);
   font-size: clamp(2.8rem, 8.5vw, 8.5rem);
@@ -252,7 +272,7 @@ nav.scrolled {
   max-width: 1000px;
   margin-bottom: 48px;
   opacity: 0;
-  animation: fadeUp 1.4s cubic-bezier(0.19, 1, 0.22, 1) 0.5s forwards;
+  animation: fadeUp 1s cubic-bezier(0.19, 1, 0.22, 1) 0.2s forwards;
   word-break: break-word;
   letter-spacing: -0.02em;
 }
@@ -272,7 +292,7 @@ nav.scrolled {
   line-height: 1.85;
   margin-bottom: 56px;
   opacity: 0;
-  animation: fadeUp 1.2s ease 0.7s forwards;
+  animation: fadeUp 1s cubic-bezier(0.19, 1, 0.22, 1) 0.3s forwards;
 }
 
 .hero-actions {
@@ -280,7 +300,7 @@ nav.scrolled {
   align-items: center;
   gap: 40px;
   opacity: 0;
-  animation: fadeUp 1.2s ease 0.9s forwards;
+  animation: fadeUp 1s cubic-bezier(0.19, 1, 0.22, 1) 0.4s forwards;
 }
 
 .btn-primary {
@@ -1234,8 +1254,18 @@ footer::before {
 }
 
 @media (max-width: 600px) {
+  section,
+  #hero {
+    padding: 80px 20px 40px;
+  }
+
   .about-stats {
     grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr; /* Stacking on mobile */
   }
 
   .process-steps {
@@ -1544,6 +1574,33 @@ footer::before {
   }
   .modal-title {
     font-size: 1.75rem;
+  }
+}
+
+/* Mobile Performance - High Rendering Speed */
+@media (max-width: 768px) {
+  .section-reveal {
+    transform: scale(0.96) translateY(12px);
+    filter: blur(4px); /* Simplified blur for mobile GPU */
+    transition: opacity 1.2s cubic-bezier(0.23, 1, 0.32, 1),
+                transform 1.2s cubic-bezier(0.23, 1, 0.32, 1),
+                filter 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .reveal {
+    filter: blur(2px);
+    transform: translateY(20px) scale(0.98);
+  }
+
+  .section-reveal.visible,
+  .reveal.visible {
+    filter: blur(0);
+    transform: scale(1) translateY(0);
+  }
+
+  .hero-grid {
+    background-size: 40px 40px; /* Thinner for mobile pixels */
+    opacity: 0.6;
   }
 }
 
