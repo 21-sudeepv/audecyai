@@ -1,0 +1,26 @@
+globalThis.__BUILD_MANIFEST = {
+  "pages": {
+    "/_app": []
+  },
+  "devFiles": [],
+  "polyfillFiles": [
+    "static/chunks/04h-_next_dist_build_polyfills_polyfill-nomodule.js"
+  ],
+  "lowPriorityFiles": [
+    "static/development/_buildManifest.js",
+    "static/development/_ssgManifest.js",
+    "static/development/_clientMiddlewareManifest.js"
+  ],
+  "rootMainFiles": [
+    "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_02.h3ee._.js",
+    "static/chunks/04h-_next_dist_compiled_next-devtools_index_0b5n.v3.js",
+    "static/chunks/04h-_next_dist_compiled_react-dom_0c_x9bv._.js",
+    "static/chunks/04h-_next_dist_compiled_react-server-dom-turbopack_0ro~9x5._.js",
+    "static/chunks/04h-_next_dist_compiled_0g~jjc9._.js",
+    "static/chunks/04h-_next_dist_client_0_aj_37._.js",
+    "static/chunks/04h-_next_dist_0ntmi_y._.js",
+    "static/chunks/04h-_@swc_helpers_cjs_0p~lo3.._.js",
+    "static/chunks/audecy_ai_0rqeker._.js",
+    "static/chunks/turbopack-audecy_ai_046d~.1._.js"
+  ]
+};

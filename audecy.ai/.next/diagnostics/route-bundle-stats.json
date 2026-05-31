@@ -1,0 +1,57 @@
+[
+  {
+    "route": "/",
+    "firstLoadUncompressedJsBytes": 553515,
+    "firstLoadChunkPaths": [
+      ".next\\static\\chunks\\0jxz651_p7yln.js",
+      ".next\\static\\chunks\\0wowf2ypmwo6..js",
+      ".next\\static\\chunks\\0~mw8rou6csly.js",
+      ".next\\static\\chunks\\0zw0d7z4jk.go.js",
+      ".next\\static\\chunks\\02f2j3lvvmvx3.js",
+      ".next\\static\\chunks\\0-3mhyjen0ljd.js",
+      ".next\\static\\chunks\\0emz5.pvg1080.js",
+      ".next\\static\\chunks\\turbopack-0kjv8f--15534.js"
+    ]
+  },
+  {
+    "route": "/blogs",
+    "firstLoadUncompressedJsBytes": 527445,
+    "firstLoadChunkPaths": [
+      ".next\\static\\chunks\\0jxz651_p7yln.js",
+      ".next\\static\\chunks\\0wowf2ypmwo6..js",
+      ".next\\static\\chunks\\0gbwctfy7dap-.js",
+      ".next\\static\\chunks\\0zw0d7z4jk.go.js",
+      ".next\\static\\chunks\\02f2j3lvvmvx3.js",
+      ".next\\static\\chunks\\0-3mhyjen0ljd.js",
+      ".next\\static\\chunks\\0emz5.pvg1080.js",
+      ".next\\static\\chunks\\turbopack-0kjv8f--15534.js"
+    ]
+  },
+  {
+    "route": "/faq",
+    "firstLoadUncompressedJsBytes": 527316,
+    "firstLoadChunkPaths": [
+      ".next\\static\\chunks\\0jxz651_p7yln.js",
+      ".next\\static\\chunks\\0wowf2ypmwo6..js",
+      ".next\\static\\chunks\\0n2u615ab~dyl.js",
+      ".next\\static\\chunks\\0zw0d7z4jk.go.js",
+      ".next\\static\\chunks\\02f2j3lvvmvx3.js",
+      ".next\\static\\chunks\\0-3mhyjen0ljd.js",
+      ".next\\static\\chunks\\0emz5.pvg1080.js",
+      ".next\\static\\chunks\\turbopack-0kjv8f--15534.js"
+    ]
+  },
+  {
+    "route": "/_not-found",
+    "firstLoadUncompressedJsBytes": 514660,
+    "firstLoadChunkPaths": [
+      ".next\\static\\chunks\\0jxz651_p7yln.js",
+      ".next\\static\\chunks\\0wowf2ypmwo6..js",
+      ".next\\static\\chunks\\0zw0d7z4jk.go.js",
+      ".next\\static\\chunks\\02f2j3lvvmvx3.js",
+      ".next\\static\\chunks\\0-3mhyjen0ljd.js",
+      ".next\\static\\chunks\\0emz5.pvg1080.js",
+      ".next\\static\\chunks\\turbopack-0kjv8f--15534.js"
+    ]
+  }
+]
