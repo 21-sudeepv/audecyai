@@ -401,9 +401,7 @@ export default function Home() {
           {[
             { num: "01", title: "Specialists, Not Generalists", text: "We live in AI and automation. It's not a service we bolted on — it's the only thing we do, and we do it at an elite level." },
             { num: "02", title: "End-to-End Ownership", text: "From strategy to production deployment, we handle the full lifecycle. One team, total accountability, zero handoff gaps." },
-            { num: "03", title: "Built for Real Results", text: "We measure success by outcomes, not deliverables. Our solutions are designed to work under real conditions — not just pass a demo." },
-            { num: "04", title: "Radical Transparency", text: "You'll always know where your project stands. Clear communication, regular updates, and no surprises — from kickoff to launch and beyond." },
-            { num: "05", title: "Startup Speed, Enterprise Rigour", text: "We move fast without compromising quality. Whether you're seed-stage or mid-market, we match our pace to your ambition." }
+            { num: "03", title: "Built for Real Results", text: "We measure success by outcomes, not deliverables. Our solutions are designed to work under real conditions — not just pass a demo." }
           ].map((item, idx) => (
             <div className="why-item reveal" key={idx}>
               <div className="why-item-num">{item.num}</div>
@@ -454,12 +452,12 @@ export default function Home() {
         </div>
         <div className="testimonials-grid">
           {[
-            { quote: "Audecy AI completely transformed our maintenance operations. The predictive model they built reduced our downtime by over 40% within the first quarter. Genuinely impressive work.", name: "Rohan Mehta", role: "Head of Operations, Schindler Lifts India", initials: "RM" },
+            { quote: "Audecy AI completely transformed our maintenance operations. The predictive model they built reduced our downtime by over 40% within the first quarter. Genuinely impressive work.", name: "Head of Engineering", role: "Schindler India", initials: "HE" },
             { quote: "They didn't just deliver a product — they became true partners in our vision. The AI decision support tool they built is now central to how our clinical team operates every day.", name: "Dr. Priya Nair", role: "Co-founder, MedTech Startup", initials: "PN" },
-            { quote: "Working with Audecy AI gave us the strategic clarity we were missing. Their consulting framework helped us reposition our product and unlock a new revenue channel within weeks.", name: "Aditya Shetty", role: "CEO, Change Pay", initials: "AS" },
-            { quote: "The Badminton Hub platform exceeded everything we hoped for. Fast, beautiful, and built exactly to spec. The team was communicative and delivered ahead of schedule.", name: "Kenji Tanaka", role: "Founder, Genki Sports", initials: "KT" },
-            { quote: "Audecy AI's technical depth is rare. They understood our data infrastructure problems instantly and built a pipeline solution that scales effortlessly with our growth.", name: "Shruti Iyer", role: "CTO, Fintech Startup", initials: "SI" },
-            { quote: "From the first call to final deployment, the experience was seamless. They bring the speed of a startup with the rigour of an enterprise team. Highly recommended.", name: "Marcus Webb", role: "VP Engineering, SaaS Company", initials: "MW" }
+            { quote: "Working with Audecy AI gave us the strategic clarity we were missing. Their consulting framework helped us reposition our product and unlock a new revenue channel within weeks.", name: "Agam Gayatriay", role: "Founder, Gradefied", initials: "AG" },
+            { quote: "The Badminton Hub platform exceeded everything we hoped for. Fast, beautiful, and built exactly to spec. The team was communicative and delivered ahead of schedule.", name: "Sunil", role: "Founder, Genki Sports", initials: "S" },
+            { quote: "Audecy AI's technical depth is rare. They understood our operational bottlenecks instantly and built an automation solution that improves our efficiency effortlessly.", name: "Plant Manager", role: "Water Treatment Plant", initials: "PM" },
+            { quote: "From the first call to final deployment, the experience was seamless. They bring the speed of a startup with the rigour of an enterprise team. Highly recommended.", name: "VP of Engineering", role: "Enterprise SaaS Company", initials: "VP" }
           ].map((t, idx) => (
             <div className="testimonial-card reveal" key={idx}>
               <div className="testimonial-quote-mark">❝</div>
@@ -474,12 +472,29 @@ export default function Home() {
       </section>
 
       {/* CONTACT */}
-      <section id="contact" className="section-reveal">
-        <div className="section-label">Get In Touch</div>
-        <h2 className="section-title">Let's build<br />something great.</h2>
-        <p className="contact-sub">Tell us what you're trying to solve. Our team will map out exactly how we'd approach it — no fluff, no sales pitch. Just a real conversation about what's possible.</p>
-        <div className="contact-actions">
-          <a href="mailto:business@audecyai.com" className="btn-dark">business@audecyai.com</a>
+      <section 
+        id="contact" 
+        className="section-reveal" 
+        style={{ background: 'var(--gold)', color: 'var(--ink)', borderTop: '1px solid rgba(184, 151, 90, 0.1)', textAlign: 'center', padding: '120px 24px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+        onMouseEnter={() => {
+          if (cursorRef.current) cursorRef.current.style.background = 'var(--ink)';
+          if (ringRef.current) ringRef.current.style.borderColor = 'rgba(8, 8, 8, 0.4)';
+        }}
+        onMouseLeave={() => {
+          if (cursorRef.current) cursorRef.current.style.background = 'var(--gold)';
+          if (ringRef.current) ringRef.current.style.borderColor = 'rgba(184, 151, 90, 0.4)';
+        }}
+      >
+        <div style={{ maxWidth: '640px', margin: '0 auto' }}>
+          <div className="modal-icon" style={{ color: 'var(--ink)' }}>✦</div>
+          <h2 className="modal-title" style={{ margin: '0 auto 24px', color: 'var(--ink)' }}>Get your company an <em style={{ color: 'var(--ink)' }}>AI audit</em></h2>
+          <p className="modal-text" style={{ fontSize: '1.1rem', marginBottom: '40px', color: 'rgba(10, 10, 10, 0.75)' }}>
+            Discover where AI can drive the highest ROI for your business. Let's map out your operations and identify high-impact automation opportunities.
+          </p>
+          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', flexDirection: 'row' }}>
+            <a href="https://calendly.com/business-audecyai/new-meeting-1" className="btn-dark" target="_blank" rel="noopener noreferrer">Book a Call</a>
+            <a href="https://wa.me/919133865537?text=Hello" className="btn-ghost" style={{ color: 'var(--ink)', borderColor: 'var(--ink)' }} target="_blank" rel="noopener noreferrer">Message on WhatsApp</a>
+          </div>
         </div>
       </section>
 
@@ -524,8 +539,12 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="footer-bottom">
+        <div className="footer-bottom" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
           <p className="footer-copy">© 2026 AUDECY AI. ALL RIGHTS RESERVED.</p>
+          <div className="footer-legal-links" style={{ display: 'flex', gap: '24px' }}>
+            <Link href="/privacy-policy" style={{ color: 'var(--smoke)', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.14em', textDecoration: 'none', opacity: 0.6, fontFamily: 'var(--mono)' }}>Privacy Policy</Link>
+            <Link href="/terms-and-conditions" style={{ color: 'var(--smoke)', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.14em', textDecoration: 'none', opacity: 0.6, fontFamily: 'var(--mono)' }}>Terms &amp; Conditions</Link>
+          </div>
         </div>
       </footer>
 

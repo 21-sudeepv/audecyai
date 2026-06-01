@@ -994,6 +994,7 @@ section {
 #industries {
   text-align: center;
   background: linear-gradient(to bottom, var(--ink), #0f0e0c);
+  padding: 60px 24px;
 }
 
 #industries .section-label {
@@ -1005,7 +1006,7 @@ section {
   flex-wrap: wrap;
   justify-content: center;
   gap: 14px;
-  margin-top: 64px;
+  margin-top: 32px;
   max-width: 780px;
   margin-left: auto;
   margin-right: auto;
@@ -1263,7 +1264,7 @@ section {
 
 /* FOOTER */
 footer {
-  padding: 80px 60px 40px;
+  padding: 24px 60px 12px;
   background: linear-gradient(to bottom, transparent, rgba(184, 151, 90, 0.02));
   border-top: 1px solid rgba(184, 151, 90, 0.1);
   position: relative;
@@ -1284,7 +1285,7 @@ footer::before {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
 }
 
 .footer-logo {
@@ -1322,7 +1323,7 @@ footer::before {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 40px;
+  padding-top: 16px;
   border-top: 1px solid rgba(184, 151, 90, 0.05);
 }
 
@@ -1446,7 +1447,7 @@ footer::before {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 32px 0 36px;
+  padding: 16px 0 16px;
   border-top: 1px solid rgba(184, 151, 90, 0.15);
   margin-bottom: 0;
 }

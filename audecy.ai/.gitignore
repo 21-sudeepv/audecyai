@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+.next
+package-lock.json
+.env*
+.eslintcache
+
