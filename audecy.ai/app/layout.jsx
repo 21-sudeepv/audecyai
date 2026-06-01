@@ -19,6 +19,8 @@ export const viewport = {
   themeColor: '#080808',
 };
 
+import Navbar from '../components/Navbar';
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -37,7 +39,10 @@ export default function RootLayout({ children }) {
           href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400&family=Outfit:wght@300;400;500&display=swap"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
