@@ -22,15 +22,17 @@ export default function Team() {
         <section id="teams" style={{ background: 'var(--paper)', color: 'var(--ink)', padding: '80px 40px', borderRadius: '24px', boxShadow: '0 20px 40px rgba(0,0,0,0.02)' }}>
           <div className="team-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '40px' }}>
             {[
-              { name: "Sudeep V", role: "CEO & Founder", link: "#" },
-              { name: "Rushil Mandavia", role: "Head of ML", link: "#" },
-              { name: "Aditya Sahu", role: "Head of Tech", link: "#" },
-              { name: "Aadarsh", role: "ML Intern", link: "#" }
+              { name: "Sudeep V", role: "CEO & Founder", link: "https://www.linkedin.com/in/sudeep-v-1352b6268/", photo: "/sudeep.png" },
+              { name: "Dastagiri Reddy", role: "Director", link: "https://www.linkedin.com/in/bdastagirireddy/", photo: "/das.jpg" }
             ].map((member, idx) => (
               <div className="team-card reveal visible" key={idx} style={{ background: '#ffffff', borderRadius: '16px', border: '1px solid rgba(184, 151, 90, 0.1)', padding: '48px 32px', textAlign: 'center', transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)', cursor: 'pointer', boxShadow: '0 4px 12px rgba(0,0,0,0.03)', position: 'relative', overflow: 'hidden' }} onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-12px)'; e.currentTarget.style.boxShadow = '0 24px 48px rgba(184, 151, 90, 0.12)'; e.currentTarget.style.borderColor = 'rgba(184, 151, 90, 0.4)'; }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.03)'; e.currentTarget.style.borderColor = 'rgba(184, 151, 90, 0.1)'; }}>
                 <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, transparent, var(--gold), transparent)', opacity: 0.5 }}></div>
-                <div className="team-photo" style={{ width: '130px', height: '130px', margin: '0 auto 28px', background: 'linear-gradient(135deg, rgba(184, 151, 90, 0.05) 0%, rgba(184, 151, 90, 0.15) 100%)', border: '2px solid rgba(184, 151, 90, 0.2)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '4rem', color: 'var(--gold)', boxShadow: 'inset 0 4px 10px rgba(0,0,0,0.02)' }}>
-                  <span style={{ transform: 'translateY(10px)', opacity: 0.8 }}>👤</span>
+                <div className="team-photo" style={{ width: '130px', height: '130px', margin: '0 auto 28px', background: 'linear-gradient(135deg, rgba(184, 151, 90, 0.05) 0%, rgba(184, 151, 90, 0.15) 100%)', border: '2px solid rgba(184, 151, 90, 0.2)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '4rem', color: 'var(--gold)', boxShadow: 'inset 0 4px 10px rgba(0,0,0,0.02)', overflow: 'hidden' }}>
+                  {member.photo ? (
+                    <img src={member.photo} alt={member.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  ) : (
+                    <span style={{ transform: 'translateY(10px)', opacity: 0.8 }}>👤</span>
+                  )}
                 </div>
                 <h3 style={{ fontFamily: 'var(--serif)', fontSize: '1.8rem', marginBottom: '8px', fontWeight: '500', color: 'var(--ink)' }}>{member.name}</h3>
                 <div style={{ width: '32px', height: '2px', background: 'var(--gold)', margin: '0 auto 16px', opacity: 0.4 }}></div>
