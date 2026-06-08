@@ -23,7 +23,6 @@ export default function Team() {
           <div className="team-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '40px' }}>
             {[
               { name: "Sudeep V", role: "CEO & Founder", link: "https://www.linkedin.com/in/sudeep-v-1352b6268/", photo: "/sudeep.png" },
-              { name: "Dastagiri Reddy", role: "Director", link: "https://www.linkedin.com/in/bdastagirireddy/", photo: "/das.jpg" }
             ].map((member, idx) => (
               <div className="team-card reveal visible" key={idx} style={{ background: '#ffffff', borderRadius: '16px', border: '1px solid rgba(184, 151, 90, 0.1)', padding: '48px 32px', textAlign: 'center', transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)', cursor: 'pointer', boxShadow: '0 4px 12px rgba(0,0,0,0.03)', position: 'relative', overflow: 'hidden' }} onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-12px)'; e.currentTarget.style.boxShadow = '0 24px 48px rgba(184, 151, 90, 0.12)'; e.currentTarget.style.borderColor = 'rgba(184, 151, 90, 0.4)'; }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.03)'; e.currentTarget.style.borderColor = 'rgba(184, 151, 90, 0.1)'; }}>
                 <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, transparent, var(--gold), transparent)', opacity: 0.5 }}></div>
