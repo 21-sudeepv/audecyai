@@ -373,8 +373,6 @@ export default function Home() {
           <div className="client-logos-track">
             {[...Array(2)].map((_, i) => (
               <React.Fragment key={i}>
-                <div className="client-logo"><img src="/schindler.png" alt="Schindler" className="client-logo-img" /></div>
-                <div className="client-logo-divider">✦</div>
                 <div className="client-logo"><img src="/changepay.png" alt="ChangePay" className="client-logo-img" /></div>
                 <div className="client-logo-divider">✦</div>
                 <div className="client-logo"><span>Genki<em>Sports</em></span></div>
@@ -395,7 +393,6 @@ export default function Home() {
         </div>
         <div className="testimonials-grid">
           {[
-            { quote: "Audecy AI completely transformed our maintenance operations. The predictive model they built reduced our downtime by over 40% within the first quarter. Genuinely impressive work.", name: "Head of Engineering", role: "Schindler India", initials: "HE" },
             { quote: "They didn't just deliver a product — they became true partners in our vision. The AI decision support tool they built is now central to how our clinical team operates every day.", name: "Dr. Priya Nair", role: "Co-founder, MedTech Startup", initials: "PN" },
             { quote: "Working with Audecy AI gave us the strategic clarity we were missing. Their consulting framework helped us reposition our product and unlock a new revenue channel within weeks.", name: "Agam Gayatriay", role: "Founder, Gradefied", initials: "AG" },
             { quote: "The Badminton Hub platform exceeded everything we hoped for. Fast, beautiful, and built exactly to spec. The team was communicative and delivered ahead of schedule.", name: "Sunil", role: "Founder, Genki Sports", initials: "S" },

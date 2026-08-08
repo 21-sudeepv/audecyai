@@ -40,10 +40,9 @@ export default function About() {
           <div className="about-right reveal visible">
             <div className="about-card">
               <div className="about-card-title">Current Live Projects</div>
-              <div className="about-card-text">A snapshot of what we're building right now — enterprise-grade solutions across industries, each one stretching the limits of what AI can deliver in the real world.</div>
+              <div className="about-card-text">A snapshot of what we're building right now - enterprise-grade solutions across industries, each one stretching the limits of what AI can deliver in the real world.</div>
               <div className="project-accordion">
                 {[
-                  { title: "Intelligent Fault Prediction Engine", client: "Schindler Lifts", desc: "Real-time ML system that predicts elevator failures before they happen — reducing downtime and maintenance costs at scale." },
                   { title: "Clinical Decision Support Model", client: "MedTech Startup", desc: "An AI model that analyses patient data to surface early risk signals — putting smarter decisions in the hands of clinicians." },
                   { title: "Business Strategy & Growth Consulting", client: "Change Pay", desc: "End-to-end business consulting — from market positioning to revenue strategy — helping Change Pay scale with clarity and conviction." },
                   { title: "Badminton Hub — Court Booking Platform", client: "Genki Sports", desc: "A full-stack sports platform for discovering, booking, and managing badminton courts — built for players, club owners, and communities." },
