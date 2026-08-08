@@ -1,11 +1,11 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'Audecy AI — Intelligence, Engineered for Outcomes.',
+  title: 'Audecy AI - Intelligence, Engineered for Outcomes.',
   description: 'Audecy AI: Premier consulting and product development agency. We design and build enterprise AI, machine learning models, and automated business solutions.',
   keywords: 'AI, Machine Learning, Automation, Business Consulting, Product Development, Audecy AI',
   openGraph: {
-    title: 'Audecy AI — Intelligence. Built.',
+    title: 'Audecy AI - Intelligence. Built.',
     description: 'Premier consulting and product development agency for enterprise AI and automation.',
     type: 'website',
     url: 'https://audecyai.com',

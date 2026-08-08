@@ -10,7 +10,7 @@ const faqs = [
     items: [
       {
         q: "What exactly does Audecy AI do?",
-        a: "Audecy AI is an elite AI consulting and product development agency. We design, build, and deploy custom AI systems, automation solutions, and digital products for startups and enterprises. We handle everything — from strategy and architecture to engineering and production deployment."
+        a: "Audecy AI is an elite AI consulting and product development agency. We design, build, and deploy custom AI systems, automation solutions, and digital products for startups and enterprises. We handle everything - from strategy and architecture to engineering and production deployment."
       },
       {
         q: "Who do you typically work with?",
@@ -27,7 +27,7 @@ const faqs = [
     items: [
       {
         q: "How do I start a project with Audecy AI?",
-        a: "Simply reach out via email or book a call through our Calendly link. We'll schedule a discovery call to understand your challenge, then propose a tailored approach. No fluff — just a real conversation about what's possible."
+        a: "Simply reach out via email or book a call through our Calendly link. We'll schedule a discovery call to understand your challenge, then propose a tailored approach. No fluff - just a real conversation about what's possible."
       },
       {
         q: "What does a typical engagement look like?",
@@ -56,7 +56,7 @@ const faqs = [
       },
       {
         q: "Do you build with LLMs like GPT or Claude?",
-        a: "Yes. We have deep experience with large language model integration — including fine-tuning, RAG (retrieval-augmented generation), prompt engineering, and building production-grade LLM pipelines tailored to enterprise use cases."
+        a: "Yes. We have deep experience with large language model integration - including fine-tuning, RAG (retrieval-augmented generation), prompt engineering, and building production-grade LLM pipelines tailored to enterprise use cases."
       }
     ]
   },

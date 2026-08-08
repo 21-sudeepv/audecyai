@@ -24,7 +24,7 @@ export default function About() {
         <section id="about" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '60px', padding: 0 }}>
           <div className="about-left reveal visible">
             <p className="about-desc">We are not a generic technology firm. Audecy AI is a focused team of AI engineers, full-stack developers, and business strategists who operate at the intersection of cutting-edge research and real-world deployment.</p>
-            <p className="about-desc">From identifying the right problem to delivering a production-ready solution, we take full ownership of the entire journey — so you can focus on what you do best.</p>
+            <p className="about-desc">From identifying the right problem to delivering a production-ready solution, we take full ownership of the entire journey - so you can focus on what you do best.</p>
             <div className="about-stats" style={{ gridTemplateColumns: '1fr 1fr' }}>
               <div>
                 <Link href="/case-studies" style={{ textDecoration: 'none' }}>
@@ -43,9 +43,9 @@ export default function About() {
               <div className="about-card-text">A snapshot of what we're building right now - enterprise-grade solutions across industries, each one stretching the limits of what AI can deliver in the real world.</div>
               <div className="project-accordion">
                 {[
-                  { title: "Clinical Decision Support Model", client: "MedTech Startup", desc: "An AI model that analyses patient data to surface early risk signals — putting smarter decisions in the hands of clinicians." },
-                  { title: "Business Strategy & Growth Consulting", client: "Change Pay", desc: "End-to-end business consulting — from market positioning to revenue strategy — helping Change Pay scale with clarity and conviction." },
-                  { title: "Badminton Hub — Court Booking Platform", client: "Genki Sports", desc: "A full-stack sports platform for discovering, booking, and managing badminton courts — built for players, club owners, and communities." },
+                  { title: "Clinical Decision Support Model", client: "MedTech Startup", desc: "An AI model that analyses patient data to surface early risk signals - putting smarter decisions in the hands of clinicians." },
+                  { title: "Business Strategy & Growth Consulting", client: "Change Pay", desc: "End-to-end business consulting - from market positioning to revenue strategy - helping Change Pay scale with clarity and conviction." },
+                  { title: "Badminton Hub - Court Booking Platform", client: "Genki Sports", desc: "A full-stack sports platform for discovering, booking, and managing badminton courts - built for players, club owners, and communities." },
                   { title: "Smart Finance & Investment Suite", client: "Startup Client", desc: "An intelligent accounting and portfolio tracker that gives users a clear, automated view of their money and investments." }
                 ].map((p, idx) => (
                   <div className={`project-item ${expandedProject === idx ? 'expanded' : ''}`} key={idx} onClick={() => setExpandedProject(expandedProject === idx ? null : idx)}>

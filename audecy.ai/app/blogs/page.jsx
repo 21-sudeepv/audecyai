@@ -11,7 +11,7 @@ const posts = [
     date: "May 2026",
     readTime: "7 min read",
     title: "How Predictive AI is Eliminating Unplanned Downtime in Industrial Operations",
-    excerpt: "Unplanned equipment failures cost manufacturers billions annually. We break down how modern ML pipelines are turning sensor data into proactive maintenance — before the fault ever occurs.",
+    excerpt: "Unplanned equipment failures cost manufacturers billions annually. We break down how modern ML pipelines are turning sensor data into proactive maintenance - before the fault ever occurs.",
     tags: ["Predictive Maintenance", "IoT", "ML Ops"]
   },
   {
@@ -20,7 +20,7 @@ const posts = [
     date: "May 2026",
     readTime: "9 min read",
     title: "Beyond the Chatbot: Building Production-Grade LLM Systems for Enterprise",
-    excerpt: "Most LLM deployments fail not because of the model — but because of everything around it. Here's what it actually takes to ship reliable, scalable, and safe LLM applications in production.",
+    excerpt: "Most LLM deployments fail not because of the model - but because of everything around it. Here's what it actually takes to ship reliable, scalable, and safe LLM applications in production.",
     tags: ["LLMs", "RAG", "Enterprise AI"]
   },
   {
@@ -38,7 +38,7 @@ const posts = [
     date: "April 2026",
     readTime: "8 min read",
     title: "Computer Vision in Retail: From Shelf Analytics to Real-Time Loss Prevention",
-    excerpt: "Retail is undergoing a silent transformation. We explore the practical applications of CV — from automated inventory tracking to customer behaviour analysis — that are delivering measurable ROI today.",
+    excerpt: "Retail is undergoing a silent transformation. We explore the practical applications of CV - from automated inventory tracking to customer behaviour analysis - that are delivering measurable ROI today.",
     tags: ["Computer Vision", "Retail", "Real-time AI"]
   },
   {
@@ -56,7 +56,7 @@ const posts = [
     date: "March 2026",
     readTime: "11 min read",
     title: "Building Data Pipelines That Actually Scale: Architecture Patterns for 2026",
-    excerpt: "Most data pipelines work fine at 10k events/day. They collapse at 10 million. We walk through the architectural decisions — from streaming vs. batch to schema evolution — that determine whether your pipeline grows with you.",
+    excerpt: "Most data pipelines work fine at 10k events/day. They collapse at 10 million. We walk through the architectural decisions - from streaming vs. batch to schema evolution - that determine whether your pipeline grows with you.",
     tags: ["Data Engineering", "MLOps", "Scalability"]
   }
 ];
@@ -77,7 +77,7 @@ export default function Blogs() {
       <div className="page-hero">
         <div className="page-hero-label">Insights & Thinking</div>
         <h1 className="page-hero-title">The Audecy <em>Blog</em></h1>
-        <p className="page-hero-sub">Deep dives into AI, automation, and the future of intelligent systems — from the team building them.</p>
+        <p className="page-hero-sub">Deep dives into AI, automation, and the future of intelligent systems - from the team building them.</p>
       </div>
 
       <div className="blogs-container">

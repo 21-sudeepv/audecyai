@@ -183,14 +183,14 @@ export default function Home() {
       <section id="services" className="section-reveal">
         <div className="services-header reveal">
           <div><div className="section-label">What We Do</div><h2 className="section-title">Our <em>Services</em></h2></div>
-          <p className="services-header-right">Every engagement is bespoke. We listen first, then architect a solution precisely right for your challenge — not a template, not an off-the-shelf product.</p>
+          <p className="services-header-right">Every engagement is bespoke. We listen first, then architect a solution precisely right for your challenge - not a template, not an off-the-shelf product.</p>
         </div>
         <div className="services-grid">
           {[
             { num: "01", icon: "⬡", name: "AI & Machine Learning", desc: "Custom models, pipelines, and intelligent systems designed for your exact use case. From predictive analytics to generative AI, we turn data into decisions.", tags: ["Predictive Models", "NLP", "Computer Vision", "LLM Integration"] },
             { num: "02", icon: "◈", name: "Automation & Process Intelligence", desc: "Eliminate inefficiency. We audit, redesign, and automate your operational workflows using AI-powered systems that scale with your business and never sleep.", tags: ["RPA", "Workflow AI", "Anomaly Detection", "IoT Integration"] },
             { num: "03", icon: "◎", name: "Web & App Development", desc: "Precision-engineered digital products built for performance and scale. Web platforms, mobile apps, and full-stack systems crafted to the highest standard.", tags: ["React / Next.js", "React Native", "Flutter", "Node.js"] },
-            { num: "04", icon: "◇", name: "AI Product Development", desc: "From idea to market. We partner with startups to shape, build, and launch AI-native products — handling strategy, architecture, and engineering end-to-end.", tags: ["MVP Development", "AI Integration", "Product Strategy", "GTM Support"] },
+            { num: "04", icon: "◇", name: "AI Product Development", desc: "From idea to market. We partner with startups to shape, build, and launch AI-native products - handling strategy, architecture, and engineering end-to-end.", tags: ["MVP Development", "AI Integration", "Product Strategy", "GTM Support"] },
             { num: "05", icon: "△", name: "Data Engineering & Analytics", desc: "Your data is only as valuable as what you extract from it. We build infrastructure, models, and dashboards that turn raw data into strategic intelligence.", tags: ["Data Pipelines", "BI Dashboards", "Forecasting", "MLOps"] },
             { num: "06", icon: "○", name: "AI Business Consulting", desc: "Not sure where AI fits into your business? We assess your operations, identify high-impact opportunities, and give you a clear, actionable roadmap to transformation.", tags: ["AI Readiness Audit", "Opportunity Mapping", "Tech Strategy", "Implementation Planning"] }
           ].map((s, idx) => (
@@ -317,10 +317,10 @@ export default function Home() {
         <h2 className="section-title reveal">A process built for <em>precision.</em></h2>
         <div className="process-steps">
           {[
-            { num: "I", title: "Discover", desc: "We open with deep listening. Understanding your business, your constraints, and the real problem beneath the surface — before writing a single line of code." },
-            { num: "II", title: "Architect", desc: "We design the right solution — technically sound, scalable, and aligned to your goals. No bloat, no guesswork. A clear blueprint before we build." },
-            { num: "III", title: "Build", desc: "Agile, iterative, and transparent. You see progress at every stage. Our engineers deliver with speed and rigour — keeping you in the loop throughout." },
-            { num: "IV", title: "Deploy & Scale", desc: "We don't hand over and disappear. We deploy, monitor, and stay with you as your solution grows — ensuring it performs in production, not just in demos." }
+            { num: "I", title: "Discover", desc: "We open with deep listening. Understanding your business, your constraints, and the real problem beneath the surface - before writing a single line of code." },
+            { num: "II", title: "Architect", desc: "We design the right solution - technically sound, scalable, and aligned to your goals. No bloat, no guesswork. A clear blueprint before we build." },
+            { num: "III", title: "Build", desc: "Agile, iterative, and transparent. You see progress at every stage. Our engineers deliver with speed and rigour - keeping you in the loop throughout." },
+            { num: "IV", title: "Deploy & Scale", desc: "We don't hand over and disappear. We deploy, monitor, and stay with you as your solution grows - ensuring it performs in production, not just in demos." }
           ].map((step, idx) => (
             <div className="process-step reveal" key={idx}>
               <div className="step-num-wrap"><span className="step-num">{step.num}</span></div>
@@ -337,14 +337,14 @@ export default function Home() {
           <div className="section-label">Why Audecy AI</div>
           <h2 className="section-title">The <em>edge</em><br />you've been<br />looking for.</h2>
           <p style={{ color: 'var(--smoke)', fontSize: '1.1rem', lineHeight: '1.8', marginTop: '32px', fontWeight: '300' }}>
-            We built Audecy AI on a simple belief — that intelligent technology, applied with precision, can change the trajectory of a business. We don't just consult. We build, ship, and stand behind everything we deliver.
+            We built Audecy AI on a simple belief - that intelligent technology, applied with precision, can change the trajectory of a business. We don't just consult. We build, ship, and stand behind everything we deliver.
           </p>
         </div>
         <div className="why-right">
           {[
-            { num: "01", title: "Specialists, Not Generalists", text: "We live in AI and automation. It's not a service we bolted on — it's the only thing we do, and we do it at an elite level." },
+            { num: "01", title: "Specialists, Not Generalists", text: "We live in AI and automation. It's not a service we bolted on - it's the only thing we do, and we do it at an elite level." },
             { num: "02", title: "End-to-End Ownership", text: "From strategy to production deployment, we handle the full lifecycle. One team, total accountability, zero handoff gaps." },
-            { num: "03", title: "Built for Real Results", text: "We measure success by outcomes, not deliverables. Our solutions are designed to work under real conditions — not just pass a demo." }
+            { num: "03", title: "Built for Real Results", text: "We measure success by outcomes, not deliverables. Our solutions are designed to work under real conditions - not just pass a demo." }
           ].map((item, idx) => (
             <div className="why-item reveal" key={idx}>
               <div className="why-item-num">{item.num}</div>
@@ -393,7 +393,7 @@ export default function Home() {
         </div>
         <div className="testimonials-grid">
           {[
-            { quote: "They didn't just deliver a product — they became true partners in our vision. The AI decision support tool they built is now central to how our clinical team operates every day.", name: "Dr. Priya Nair", role: "Co-founder, MedTech Startup", initials: "PN" },
+            { quote: "They didn't just deliver a product - they became true partners in our vision. The AI decision support tool they built is now central to how our clinical team operates every day.", name: "Dr. Priya Nair", role: "Co-founder, MedTech Startup", initials: "PN" },
             { quote: "Working with Audecy AI gave us the strategic clarity we were missing. Their consulting framework helped us reposition our product and unlock a new revenue channel within weeks.", name: "Agam Gayatriay", role: "Founder, Gradefied", initials: "AG" },
             { quote: "The Badminton Hub platform exceeded everything we hoped for. Fast, beautiful, and built exactly to spec. The team was communicative and delivered ahead of schedule.", name: "Sunil", role: "Founder, Genki Sports", initials: "S" },
             { quote: "Audecy AI's technical depth is rare. They understood our operational bottlenecks instantly and built an automation solution that improves our efficiency effortlessly.", name: "Plant Manager", role: "Water Treatment Plant", initials: "PM" },
