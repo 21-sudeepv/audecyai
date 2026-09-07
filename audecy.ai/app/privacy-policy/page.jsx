@@ -20,10 +20,10 @@ export default function PrivacyPolicy() {
 
       <div className="faq-container" style={{ maxWidth: '1000px' }}>
         <div className="legal-content" style={{ color: 'var(--smoke)', lineHeight: '1.8', fontSize: '1rem', fontWeight: '300' }}>
-          <p><strong>Audecy AI Technologies Private Limited</strong><br/>CIN: U62099KA2026PTC221151<br/>Registered office: NITK Science & Technology Entrepreneurs' Park (NITK), Srinivasnagar, Surathkal, Mangalore, Dakshina Kannada 575025, Karnataka, India</p>
-          <p style={{ marginTop: '16px' }}><strong>Version 1.0</strong><br/>Approved by the Board of Directors on [DD/MM/YYYY]<br/>Effective from [DD/MM/YYYY]<br/>Next review: [DD/MM/YYYY]</p>
-          <hr style={{ borderColor: 'rgba(184,151,90,0.15)', margin: '40px 0', borderStyle: 'solid', borderWidth: '1px 0 0 0' }}/>
-          
+          <p><strong>Audecy AI Technologies Private Limited</strong><br />CIN: U62099KA2026PTC221151<br />Registered office: NITK Science & Technology Entrepreneurs' Park (NITK), Srinivasnagar, Surathkal, Mangalore, Dakshina Kannada 575025, Karnataka, India</p>
+          <p style={{ marginTop: '16px' }}><strong>Version 1.0</strong><br />Approved by the Board of Directors on 01/09/2026<br />Effective from 01/09/2026<br />Next review: 01/01/2027</p>
+          <hr style={{ borderColor: 'rgba(184,151,90,0.15)', margin: '40px 0', borderStyle: 'solid', borderWidth: '1px 0 0 0' }} />
+
           <h2 style={{ color: 'var(--paper)', fontFamily: 'var(--serif)', fontSize: '2rem', marginTop: '40px', marginBottom: '20px', fontWeight: '300' }}>1. Purpose</h2>
           <p>Audecy AI Technologies Private Limited ("Audecy", "the Company") builds and delivers applied AI, IoT and software products for enterprise and public sector clients. Much of our work involves procurement processes, tenders and long term supplier relationships where the integrity of how business is won matters as much as the quality of what is delivered.</p>
           <p style={{ marginTop: '16px' }}>This policy sets out the standard Audecy holds itself to. We do not offer, give, request or accept bribes, and we do not do business with parties or in places where doing so would breach applicable sanctions. This is not a matter of commercial preference. It is a condition of working here and a condition of doing business with us.</p>
@@ -53,7 +53,7 @@ export default function PrivacyPolicy() {
           <p>Where the requirements of two applicable laws differ, Audecy applies the stricter standard.</p>
 
           <h2 style={{ color: 'var(--paper)', fontFamily: 'var(--serif)', fontSize: '2rem', marginTop: '40px', marginBottom: '20px', fontWeight: '300' }}>4. What is prohibited</h2>
-          
+
           <h3 style={{ color: 'var(--gold)', fontFamily: 'var(--mono)', fontSize: '0.9rem', letterSpacing: '0.1em', marginTop: '24px', marginBottom: '12px', textTransform: 'uppercase' }}>4.1 Bribery</h3>
           <p style={{ marginBottom: '16px' }}>Audecy Personnel must not, directly or through any intermediary:</p>
           <ul style={{ paddingLeft: '20px', marginBottom: '20px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -147,7 +147,7 @@ export default function PrivacyPolicy() {
           <h2 style={{ color: 'var(--paper)', fontFamily: 'var(--serif)', fontSize: '2rem', marginTop: '40px', marginBottom: '20px', fontWeight: '300' }}>15. Review</h2>
           <p>This policy is reviewed by the Board at least annually and whenever there is a material change to Audecy's business, geographic footprint or the applicable legal framework. The current version is published at audecyai.com and is made available to clients, suppliers and partners on request.</p>
 
-          <hr style={{ borderColor: 'rgba(184,151,90,0.15)', margin: '40px 0', borderStyle: 'solid', borderWidth: '1px 0 0 0' }}/>
+          <hr style={{ borderColor: 'rgba(184,151,90,0.15)', margin: '40px 0', borderStyle: 'solid', borderWidth: '1px 0 0 0' }} />
           <p><em>Approved by the Board of Directors of Audecy AI Technologies Private Limited.</em></p>
           <p style={{ marginTop: '8px' }}><em>Sudeep V, Founder and Chief Executive Officer, Director</em></p>
         </div>
